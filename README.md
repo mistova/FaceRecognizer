@@ -7,7 +7,7 @@ Technology used :
 -Python
 -tkinter GUI interface
 
-Here I am working on Face recognition based Attendance Management System by using OpenCV(Python). One can mark thier attendance by simply facing the camera. 
+Here I am working on Face recognition based Attendance Management System by using OpenCV(Python). One can mark their attendance by simply facing the camera. 
 
 How it works :
 
