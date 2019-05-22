@@ -15,17 +15,12 @@ import tkinter.ttk as ttk
 import tkinter.font as font
 
 window = tk.Tk()
-#helv36 = tk.Font(family='Helvetica', size=36, weight='bold')
 window.title("Face_Recogniser")
 
 dialog_title = 'QUIT'
 dialog_text = 'Are you sure?'
-#answer = messagebox.askquestion(dialog_title, dialog_text)
- 
-#window.geometry('1280x720')
-window.configure(background='blue')
 
-#window.attributes('-fullscreen', True)
+window.configure(background='blue')
 
 window.grid_rowconfigure(0, weight=1)
 window.grid_columnconfigure(0, weight=1)
