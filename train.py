@@ -100,6 +100,8 @@ def TakeImages():
                 cv2.imwrite("TrainingImage\ "+name +"."+Id +'.'+ str(sampleNum) + ".jpg", gray[y:y+h,x:x+w])
                 #display the frame
                 cv2.imshow('frame',img)
+                
+            cv2.imshow('img',img) 
             #wait for 100 miliseconds 
             if cv2.waitKey(100) & 0xFF == ord('q'):
                 break
