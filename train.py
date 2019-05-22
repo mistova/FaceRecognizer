@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sun Jun 17 2018
-
-@author: Ashish Kumar
-"""
 
 import tkinter as tk
 from tkinter import Message ,Text
@@ -34,31 +29,6 @@ window.configure(background='blue')
 
 window.grid_rowconfigure(0, weight=1)
 window.grid_columnconfigure(0, weight=1)
-
-#path = "profile.jpg"
-
-#Creates a Tkinter-compatible photo image, which can be used everywhere Tkinter expects an image object.
-#img = ImageTk.PhotoImage(Image.open(path))
-
-#The Label widget is a standard Tkinter widget used to display a text or image on the screen.
-#panel = tk.Label(window, image = img)
-
-
-#panel.pack(side = "left", fill = "y", expand = "no")
-
-#cv_img = cv2.imread("img541.jpg")
-#x, y, no_channels = cv_img.shape
-#canvas = tk.Canvas(window, width = x, height =y)
-#canvas.pack(side="left")
-#photo = PIL.ImageTk.PhotoImage(image = PIL.Image.fromarray(cv_img)) 
-# Add a PhotoImage to the Canvas
-#canvas.create_image(0, 0, image=photo, anchor=tk.NW)
-
-#msg = Message(window, text='Hello, world!')
-
-# Font is a tuple of (font_family, size_in_points, style_modifier_string)
-
-
 
 message = tk.Label(window, text="Face-Recognition-Based-Attendance-Management-System" ,bg="Green"  ,fg="white"  ,width=50  ,height=3,font=('times', 30, 'italic bold underline')) 
 
@@ -123,7 +93,7 @@ def TakeImages():
         harcascadePath = "haarcascade_frontalface_default.xml"
         detector=cv2.CascadeClassifier(harcascadePath)
         sampleNum=0
-        while(True):
+        while True:
             ret, img = cam.read()
             gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
             faces = detector.detectMultiScale(gray, 1.3, 5)
@@ -151,11 +121,11 @@ def TakeImages():
         csvFile.close()
         message.configure(text= res)
     else:
-        if(is_number(Id)):
-            res = "Enter Alphabetical Name"
-            message.configure(text= res)
-        if(name.isalpha()):
+        if(is_number(Id)==0):
             res = "Enter Numeric Id"
+            message.configure(text= res)
+        if(name.isalpha()==0):
+            res = "Enter Alphabetical Name"
             message.configure(text= res)
     
 def TrainImages():
@@ -194,14 +164,12 @@ def TrackImages():
     recognizer = cv2.face.LBPHFaceRecognizer_create() #cv2.createLBPHFaceRecognizer() , cv2.face.LBPHFaceRecognizer_create()
     recognizer.read("TrainingImageLabel\Trainner.yml")
     harcascadePath = "haarcascade_frontalface_default.xml"
-    faceCascade = cv2.CascadeClassifier(harcascadePath);   
-    print("1") 
+    faceCascade = cv2.CascadeClassifier(harcascadePath)
     df=pd.read_csv("StudentDetails\StudentDetails.csv")
     cam = cv2.VideoCapture(0)
     font = cv2.FONT_HERSHEY_SIMPLEX        
     col_names =  ['Id','Name','Date','Time']
-    attendance = pd.DataFrame(columns = col_names)    
-    print("2")    
+    attendance = pd.DataFrame(columns = col_names)
     while True:
         ret, im =cam.read()
         gray=cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
